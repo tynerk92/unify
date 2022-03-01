@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-root',
@@ -7,13 +6,7 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'unify'
+  constructor() {}
 
-  constructor(private readonly http: HttpClient) {}
-
-  ngOnInit() {
-    this.http.get('server/test').subscribe((data) => {
-      this.title = data.toString()
-    })
-  }
+  ngOnInit(): void {}
 }

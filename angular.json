@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "42f45ef1-2de2-4666-abbb-34f002a85f0e"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -70,8 +70,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "unify:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "unify:build:production"
             },
             "development": {
               "browserTarget": "unify:build:development",
