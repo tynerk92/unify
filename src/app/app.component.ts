@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
+import { USER_STORAGE_KEY } from './ngrx/actions/user/user.actions'
 import { User } from './ngrx/models/user'
 import { UserState } from './ngrx/reducers/user/user.reducer'
 import { selectActiveUser } from './ngrx/selectors/user/user.selectors'
@@ -18,7 +19,9 @@ export class AppComponent implements OnInit {
     this.activeUser$ = this.userStore.pipe(select(selectActiveUser))
 
     this.activeUser$.subscribe((activeUser) => {
-      this.userLoggedIn = Boolean(activeUser && activeUser._id)
+      this.userLoggedIn = Boolean(
+        localStorage.getItem(USER_STORAGE_KEY) || (activeUser && activeUser._id)
+      )
     })
   }
 
