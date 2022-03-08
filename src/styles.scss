@@ -1,20 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--u-clr-dark);
 }
 
 :root {
   // Spacing and Sizing
-  --u-space-xxl: 256px;
-  --u-space-xl: 128px;
-  --u-space-lg: 64px;
-  --u-space-md: 32px;
-  --u-space-sm: 16px;
-  --u-space-xs: 8px;
+  --u-space-xxl: 16rem;
+  --u-space-xl: 8rem;
+  --u-space-lg: 4rem;
+  --u-space-md: 2rem;
+  --u-space-sm: 1rem;
+  --u-space-xs: 0.5rem;
+  --u-space-xxs: 0.25rem;
+
+  // Border radius
+  --u-border-radius-sm: var(--u-space-xxs);
+  --u-border-radius-md: var(--u-space-xs);
+  --u-border-radius-lg: var(--u-space-sm);
 
   // Colors
   --u-clr-primary: #6c63ff;
   --u-clr-neutral: #ececec;
+  --u-clr-white: #f3f3f3;
+  --u-clr-dark: #535353;
+}
+
+button {
+  cursor: pointer;
+}
+
+form {
+  label {
+    display: block;
+  }
+
+  input {
+    display: block;
+    border: none;
+    outline: 2px solid var(--u-clr-dark);
+    border-radius: var(--u-border-radius-sm);
+    padding: var(--u-space-xs) var(--u-space-sm);
+    margin-top: var(--u-space-xxs);
+    margin-bottom: var(--u-space-sm);
+
+    &:focus-visible {
+      border: none;
+      outline: solid 2px var(--u-clr-primary);
+    }
+  }
+
+  button[type='submit'] {
+    background-color: var(--u-clr-primary);
+    border: none;
+    padding: var(--u-space-xs) var(--u-space-sm);
+    color: var(--u-clr-white);
+    font-size: 1rem;
+    border-radius: var(--u-border-radius-sm);
+
+    &:focus-visible {
+      outline: solid 2px var(--u-clr-dark);
+    }
+  }
 }

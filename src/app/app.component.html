@@ -1,5 +1,12 @@
 <unify-toolbar></unify-toolbar>
+
 <main>
   <unify-sidebar></unify-sidebar>
   <unify-content></unify-content>
 </main>
+
+<ng-container *ngIf="!userLoggedIn">
+  <unify-modal>
+    <unify-login></unify-login>
+  </unify-modal>
+</ng-container>

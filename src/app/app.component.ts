@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core'
+import { select, Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { User } from './ngrx/models/user'
+import { UserState } from './ngrx/reducers/user/user.reducer'
+import { selectActiveUser } from './ngrx/selectors/user/user.selectors'
 
 @Component({
   selector: 'app-root',
@@ -6,7 +11,16 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  activeUser$: Observable<User>
+  userLoggedIn: boolean = false
+
+  constructor(private readonly userStore: Store<UserState>) {
+    this.activeUser$ = this.userStore.pipe(select(selectActiveUser))
+
+    this.activeUser$.subscribe((activeUser) => {
+      this.userLoggedIn = Boolean(activeUser && activeUser._id)
+    })
+  }
 
   ngOnInit(): void {}
 }
