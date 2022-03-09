@@ -10,18 +10,18 @@
 
 :root {
   // Spacing and Sizing
-  --u-space-xxl: 16rem;
-  --u-space-xl: 8rem;
-  --u-space-lg: 4rem;
-  --u-space-md: 2rem;
-  --u-space-sm: 1rem;
-  --u-space-xs: 0.5rem;
-  --u-space-xxs: 0.25rem;
+  --u-space-256: 16rem;
+  --u-space-128: 8rem;
+  --u-space-64: 4rem;
+  --u-space-32: 2rem;
+  --u-space-16: 1rem;
+  --u-space-8: 0.5rem;
+  --u-space-4: 0.25rem;
 
   // Border radius
-  --u-border-radius-sm: var(--u-space-xxs);
-  --u-border-radius-md: var(--u-space-xs);
-  --u-border-radius-lg: var(--u-space-sm);
+  --u-border-radius-sm: var(--u-space-4);
+  --u-border-radius-md: var(--u-space-8);
+  --u-border-radius-lg: var(--u-space-16);
 
   // Colors
   --u-clr-primary: #6c63ff;
@@ -44,9 +44,9 @@ form {
     border: none;
     outline: 2px solid var(--u-clr-dark);
     border-radius: var(--u-border-radius-sm);
-    padding: var(--u-space-xs) var(--u-space-sm);
-    margin-top: var(--u-space-xxs);
-    margin-bottom: var(--u-space-sm);
+    padding: var(--u-space-8) var(--u-space-16);
+    margin-top: var(--u-space-4);
+    margin-bottom: var(--u-space-16);
 
     &:focus-visible {
       border: none;
@@ -57,7 +57,7 @@ form {
   button[type='submit'] {
     background-color: var(--u-clr-primary);
     border: none;
-    padding: var(--u-space-xs) var(--u-space-sm);
+    padding: var(--u-space-8) var(--u-space-16);
     color: var(--u-clr-white);
     font-size: 1rem;
     border-radius: var(--u-border-radius-sm);
