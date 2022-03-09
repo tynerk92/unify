@@ -4,9 +4,6 @@ import { Observable } from 'rxjs'
 import { User } from './shared/models/db/user.model'
 import { AppState } from './store'
 import { selectActiveUser } from './store/selectors/auth.selectors'
-// import { USER_STORAGE_KEY } from './ngrx/actions/user/user.actions'
-// import { UserState } from './ngrx/reducers/user/user.reducer'
-// import { selectActiveUser } from './ngrx/selectors/user/user.selectors'
 
 @Component({
   selector: 'app-root',
