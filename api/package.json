@@ -15,7 +15,6 @@
   "dependencies": {
     "@types/mongodb": "^4.0.7",
     "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "mongodb": "^4.4.0",
     "webpack": "^5.69.1"
