@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment'
 import * as fromAuth from './reducers/auth.reducer'
 
 export interface AppState {
-  [fromAuth.authFeatureKey]: fromAuth.State
+  [fromAuth.authFeatureKey]: fromAuth.AuthState
 }
 
 export const reducers: ActionReducerMap<AppState> = {

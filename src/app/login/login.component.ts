@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Running submit')
     this.store.dispatch(
       login({
         data: {
@@ -37,8 +36,5 @@ export class LoginComponent implements OnInit {
         },
       })
     )
-    // this.loginService.login(this.f.controls.username.value, this.f.controls.password.value).subscribe(() => {
-
-    // })
   }
 }

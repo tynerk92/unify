@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<div [ngSwitch]="userRole$ | async">
+  <unify-admin-dashboard
+    *ngSwitchCase="userRoles.ADMIN"
+  ></unify-admin-dashboard>
+</div>

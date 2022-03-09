@@ -7,6 +7,7 @@ interface User extends WithId<Document> {
   username: string
   password: string
   salt: string
+  role: string
 }
 
 const router = Express.Router()
@@ -28,6 +29,7 @@ router.post('/login', (req: Express.Request, res: Express.Response) => {
           res.send({
             _id: potentialUser._id,
             username: potentialUser.username,
+            role: potentialUser.role,
           })
         } else {
           res.sendStatus(401)
@@ -54,6 +56,7 @@ router.post('/register', (req: Express.Request, res: Express.Response) => {
       username,
       salt,
       password: hash,
+      role: 'ADMIN',
     })
     .then((data) => {
       res.send(data)
