@@ -12,11 +12,9 @@ import { LoginModule } from './login/login.module'
 import { StoreModule } from '@ngrx/store'
 import { reducers, metaReducers } from './store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { environment } from '../environments/environment';
-import { PreventDefaultDirective } from './shared/directives/prevent-default.directive';
-import { EffectsModule } from '@ngrx/effects';
+import { environment } from '../environments/environment'
+import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
-// import { userFeatureKey, userReducer } from './ngrx/reducers/user/user.reducer'
 
 @NgModule({
   declarations: [
@@ -24,7 +22,6 @@ import { AuthEffects } from './store/effects/auth.effects'
     ToolbarComponent,
     SidebarComponent,
     ContentComponent,
-    PreventDefaultDirective,
   ],
   imports: [
     BrowserModule,
