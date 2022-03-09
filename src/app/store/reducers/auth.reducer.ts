@@ -1,15 +1,15 @@
-import { Action, createReducer, on } from '@ngrx/store'
+import { createReducer, on } from '@ngrx/store'
 import { User } from 'src/app/shared/models/db/user.model'
 import * as fromAuthActions from '../actions/auth.actions'
 
 export const authFeatureKey = 'auth'
 
-export interface State {
+export interface AuthState {
   user: User | null
 }
 
-export const initialState: State = {
-  user: null,
+export const initialState: AuthState = {
+  user: {} as User,
 }
 
 export const reducer = createReducer(

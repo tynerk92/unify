@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { of } from 'rxjs'
+import { Observable } from 'rxjs'
 import { Auth } from '../shared/models/app/auth.model'
 import { User } from '../shared/models/db/user.model'
 
@@ -10,10 +10,10 @@ import { User } from '../shared/models/db/user.model'
 export class LoginService {
   constructor(private readonly http: HttpClient) {}
 
-  login(authData: Auth) {
-    return of({
-      _id: 'fakeUserId',
-      username: 'fakeUsername',
-    } as User)
+  login(authData: Auth): Observable<User> {
+    return this.http.post<User>(
+      `/api/user/login?username=${authData.username}&password=${authData.password}`,
+      null
+    )
   }
 }

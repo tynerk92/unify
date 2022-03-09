@@ -15,6 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
 import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
+import { DashboardModule } from './content/dashboard/dashboard.module'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthEffects } from './store/effects/auth.effects'
     HttpClientModule,
     ModalModule,
     LoginModule,
+    DashboardModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
