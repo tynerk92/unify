@@ -1,0 +1,17 @@
+.u-modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .u-modal-container {
+    background-color: var(--u-clr-white);
+    border-radius: var(--u-border-radius-lg);
+    padding: var(--u-space-32);
+  }
+}
