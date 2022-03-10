@@ -1,4 +1,4 @@
-<div [ngSwitch]="userRole$ | async">
+<div [ngSwitch]="userRole$ | async" class="u-dashboard-content">
   <unify-admin-dashboard
     *ngSwitchCase="userRoles.ADMIN"
   ></unify-admin-dashboard>

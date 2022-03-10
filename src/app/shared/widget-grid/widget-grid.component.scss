@@ -1,0 +1,9 @@
+.u-widget-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(var(--u-space-256), 1fr));
+  grid-auto-rows: var(--u-space-256);
+  grid-auto-flow: dense;
+  gap: var(--u-space-16);
+}

@@ -1,0 +1,14 @@
+.u-widget-container {
+  background-color: var(--u-clr-white);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  width: auto;
+  height: 100%;
+  padding: var(--u-space-16);
+  border-radius: var(--u-border-radius-md);
+
+  ::ng-deep {
+    .u-widget-title > h1 {
+      font-size: 1.3rem;
+    }
+  }
+}
