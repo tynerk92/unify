@@ -1,4 +1,5 @@
 .u-sidebar {
   height: calc(100vh - var(--u-space-64));
-  background-color: var(--u-clr-neutral);
+  background-color: var(--u-clr-dark);
+  box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, 0.5);
 }
