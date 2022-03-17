@@ -1,9 +1,17 @@
 .u-widget-grid {
+  --widget-min-width: var(--u-space-256);
+  --widget-gap: var(--u-space-16);
+  --widget-initial-columns: 3;
+  --widget-columns: 3;
+
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(var(--u-space-256), 1fr));
+  grid-template-columns: repeat(
+    var(--widget-columns),
+    minmax(var(--widget-min-width), 1fr)
+  );
   grid-auto-rows: var(--u-space-256);
   grid-auto-flow: dense;
-  gap: var(--u-space-16);
+  gap: var(--widget-gap);
 }

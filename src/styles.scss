@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -28,6 +28,11 @@
   --u-clr-neutral: #ececec;
   --u-clr-white: #f3f3f3;
   --u-clr-dark: #535353;
+  --u-clr-black: #1d1d1d;
+
+  // UI
+  --u-sidebar-width: var(--u-space-256);
+  --u-content-horizontal-padding: var(--u-space-32);
 }
 
 button {
