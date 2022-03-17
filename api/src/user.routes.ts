@@ -48,6 +48,8 @@ router.post('/register', (req: Express.Request, res: Express.Response) => {
   const username = req.body.username
   const password = req.body.password
 
+  console.log('Data: ', req)
+
   const salt = bcrypt.genSaltSync(10)
   const hash = bcrypt.hashSync(password, salt)
 

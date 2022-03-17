@@ -1,1 +1,5 @@
-<div class="u-sidebar"></div>
+<div [ngSwitch]="userRole$ | async" class="u-sidebar">
+  <unify-admin-navigation
+    *ngSwitchCase="userRoles.ADMIN"
+  ></unify-admin-navigation>
+</div>

@@ -16,6 +16,8 @@ import { environment } from '../environments/environment'
 import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
 import { DashboardModule } from './content/dashboard/dashboard.module'
+import { AdminNavigationComponent } from './sidebar/admin-navigation/admin-navigation.component'
+import { NavItemComponent } from './sidebar/nav-item/nav-item.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { DashboardModule } from './content/dashboard/dashboard.module'
     ToolbarComponent,
     SidebarComponent,
     ContentComponent,
+    AdminNavigationComponent,
+    NavItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,6 @@ import { DashboardModule } from './content/dashboard/dashboard.module'
         strictActionImmutability: true,
       },
     }),
-    // StoreModule.forFeature(userFeatureKey, userReducer),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AuthEffects]),
   ],
