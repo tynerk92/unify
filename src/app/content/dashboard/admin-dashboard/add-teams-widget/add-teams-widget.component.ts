@@ -1,3 +1,4 @@
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 
@@ -7,10 +8,13 @@ import { FormControl, FormGroup } from '@angular/forms'
   styleUrls: ['./add-teams-widget.component.scss'],
 })
 export class AddTeamsWidgetComponent implements OnInit {
+  teamCreatedMessage = ''
+
   form: FormGroup = new FormGroup({
     teamName: new FormControl(''),
   })
-  constructor() {}
+
+  constructor(private readonly http: HttpClient) {}
 
   private get f() {
     return this.form.controls
@@ -20,5 +24,11 @@ export class AddTeamsWidgetComponent implements OnInit {
 
   onSubmit(): void {
     const teamName = this.f.teamName.value
+
+    this.http.post(`/api/teams/create`, { teamName }).subscribe(() => {
+      this.teamCreatedMessage = 'Successfully created new team: ' + teamName
+      this.f.teamName.setValue('')
+      setTimeout(() => (this.teamCreatedMessage = ''), 2000)
+    })
   }
 }

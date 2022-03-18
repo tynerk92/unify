@@ -6,6 +6,7 @@ import { WidgetComponent } from './widget/widget.component'
 import { WidgetGridModule } from 'src/app/shared/widget-grid/widget-grid.module'
 import { AddTeamsWidgetComponent } from './admin-dashboard/add-teams-widget/add-teams-widget.component'
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -14,6 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms'
     WidgetComponent,
     AddTeamsWidgetComponent,
   ],
-  imports: [CommonModule, WidgetGridModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    WidgetGridModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
 })
 export class DashboardModule {}

@@ -11,7 +11,13 @@ interface Team extends WithId<Document> {
 const router = Express.Router()
 
 router.post('/create', (req: Express.Request, res: Express.Response) => {
-  const teamName = req.query.teamName
+  const teamName = req.body.teamName
+
+  if (!teamName) {
+    console.log(req)
+    res.sendStatus(HttpStatus.BAD_REQUEST)
+    return
+  }
 
   db.collection('teams')
     .insertOne({
