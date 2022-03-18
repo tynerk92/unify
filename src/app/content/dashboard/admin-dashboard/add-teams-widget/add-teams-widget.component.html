@@ -1,0 +1,9 @@
+<unify-widget>
+  <h1 widget-title>Create a New Team</h1>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <label>New Team Name</label>
+    <input type="text" id="add-team-name" formControlName="teamName" />
+    <button type="submit">Create</button>
+  </form>
+  <p>{{ teamCreatedMessage }}</p>
+</unify-widget>
