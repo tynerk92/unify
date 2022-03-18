@@ -2,6 +2,7 @@ import Express from 'express'
 import bcrypt from 'bcrypt'
 import db from './db'
 import { Document, WithId } from 'mongodb'
+import { HttpStatus } from './http-status-codes'
 
 interface User extends WithId<Document> {
   username: string
@@ -38,9 +39,8 @@ router.post('/login', (req: Express.Request, res: Express.Response) => {
         res.sendStatus(401)
       }
     })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
+    .catch(() => {
+      res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     })
 })
 
