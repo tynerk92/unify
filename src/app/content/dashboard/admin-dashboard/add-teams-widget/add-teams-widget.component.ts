@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'unify-add-teams-widget',
@@ -11,7 +11,7 @@ export class AddTeamsWidgetComponent implements OnInit {
   teamCreatedMessage = ''
 
   form: FormGroup = new FormGroup({
-    teamName: new FormControl(''),
+    teamName: new FormControl('', [Validators.required]),
   })
 
   constructor(private readonly http: HttpClient) {}
@@ -23,6 +23,16 @@ export class AddTeamsWidgetComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+    this.form.markAllAsTouched()
+
+    Object.keys(this.f).forEach((key) => {
+      this.f[key].markAsDirty()
+    })
+
+    if (this.f.teamName.errors) {
+      return
+    }
+
     const teamName = this.f.teamName.value
 
     this.http.post(`/api/teams/create`, { teamName }).subscribe(() => {
@@ -30,5 +40,9 @@ export class AddTeamsWidgetComponent implements OnInit {
       this.f.teamName.setValue('')
       setTimeout(() => (this.teamCreatedMessage = ''), 2000)
     })
+  }
+
+  fieldIsInvalid(fieldName: string): boolean {
+    return this.f[fieldName].invalid && this.f[fieldName].dirty
   }
 }

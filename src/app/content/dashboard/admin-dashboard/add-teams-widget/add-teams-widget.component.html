@@ -2,7 +2,20 @@
   <h1 widget-title>Create a New Team</h1>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <label>New Team Name</label>
-    <input type="text" id="add-team-name" formControlName="teamName" />
+    <input
+      type="text"
+      id="add-team-name"
+      formControlName="teamName"
+      [class.error]="fieldIsInvalid('teamName')"
+    />
+    <span
+      class="u-validation-error"
+      *ngIf="
+        form.controls.teamName.errors?.required && fieldIsInvalid('teamName')
+      "
+    >
+      Team Name Required
+    </span>
     <button type="submit">Create</button>
   </form>
   <p>{{ teamCreatedMessage }}</p>
