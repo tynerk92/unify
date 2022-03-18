@@ -29,6 +29,7 @@
   --u-clr-white: #f3f3f3;
   --u-clr-dark: #535353;
   --u-clr-black: #1d1d1d;
+  --u-clr-error: rgb(255, 74, 74);
 
   // UI
   --u-sidebar-width: var(--u-space-256);
@@ -61,11 +62,15 @@ form {
     border-radius: var(--u-border-radius-sm);
     padding: var(--u-space-8) var(--u-space-16);
     margin-top: var(--u-space-4);
-    margin-bottom: var(--u-space-16);
+    margin-bottom: var(--u-space-8);
 
     &:focus-visible {
       border: none;
       outline: solid 2px var(--u-clr-primary);
+    }
+
+    &.error {
+      outline: 2px solid var(--u-clr-error);
     }
   }
 
@@ -76,9 +81,18 @@ form {
     color: var(--u-clr-white);
     font-size: 1rem;
     border-radius: var(--u-border-radius-sm);
+    margin-top: var(--u-space-16);
 
     &:focus-visible {
       outline: solid 2px var(--u-clr-dark);
     }
+  }
+
+  span.u-validation-error {
+    color: var(--u-clr-error);
+    font-size: 0.8rem;
+    display: block;
+    padding: 0;
+    margin: 0 0 var(--u-space-8) 0;
   }
 }
