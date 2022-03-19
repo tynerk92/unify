@@ -6,4 +6,7 @@ export interface User {
 
 export enum UserRole {
   ADMIN = 'ADMIN',
+  SCRUM_MASTER = 'SCRUM_MASTER',
+  PRODUCT_OWNER = 'PRODUCT_OWNER',
+  TEAM_MEMBER = 'TEAM_MEMBER',
 }

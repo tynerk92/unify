@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class NavItemComponent implements OnInit {
   @Input() label: string
-  @Input() active: boolean
+  @Input() route: string
 
   constructor() {}
 
