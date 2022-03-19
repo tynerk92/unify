@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router'
+import { TeamsComponent } from '../content/admin/teams/teams.component'
 import { DashboardComponent } from '../content/dashboard/dashboard.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
   },
   {
-    path: 'admin',
-    loadChildren: () =>
-      import('../sidebar/sidebar.module').then((m) => m.SidebarModule),
+    path: 'teams',
+    component: TeamsComponent,
   },
 ]
 

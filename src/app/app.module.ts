@@ -16,18 +16,10 @@ import { environment } from '../environments/environment'
 import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
 import { DashboardModule } from './content/dashboard/dashboard.module'
-import { AdminNavigationComponent } from './sidebar/admin-navigation/admin-navigation.component'
-import { NavItemComponent } from './sidebar/nav-item/nav-item.component'
+import { SidebarModule } from './sidebar/sidebar.module'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    SidebarComponent,
-    ContentComponent,
-    AdminNavigationComponent,
-    NavItemComponent,
-  ],
+  declarations: [AppComponent, ToolbarComponent, ContentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +27,7 @@ import { NavItemComponent } from './sidebar/nav-item/nav-item.component'
     ModalModule,
     LoginModule,
     DashboardModule,
+    SidebarModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
