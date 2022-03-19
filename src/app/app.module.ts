@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
-import { AppRoutingModule } from './routing/app-routing.module'
 import { AppComponent } from './app.component'
 import { ToolbarComponent } from './toolbar/toolbar.component'
 import { SidebarComponent } from './sidebar/sidebar.component'
@@ -17,12 +16,13 @@ import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
 import { DashboardModule } from './content/dashboard/dashboard.module'
 import { SidebarModule } from './sidebar/sidebar.module'
+import { RouterModule } from '@angular/router'
+import AppRoutes from './app.routes'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     ModalModule,
     LoginModule,
@@ -35,6 +35,7 @@ import { SidebarModule } from './sidebar/sidebar.module'
         strictActionImmutability: true,
       },
     }),
+    RouterModule.forRoot(AppRoutes),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AuthEffects]),
   ],

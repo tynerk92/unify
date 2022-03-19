@@ -1,9 +1,10 @@
-<unify-toolbar></unify-toolbar>
-
-<main>
-  <unify-sidebar></unify-sidebar>
-  <unify-content></unify-content>
-</main>
+<ng-container *ngIf="userLoggedIn">
+  <unify-toolbar></unify-toolbar>
+  <main>
+    <unify-sidebar></unify-sidebar>
+    <unify-content></unify-content>
+  </main>
+</ng-container>
 
 <ng-container *ngIf="!userLoggedIn">
   <unify-modal>
