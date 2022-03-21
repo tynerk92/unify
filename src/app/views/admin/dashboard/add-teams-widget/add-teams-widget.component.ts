@@ -1,6 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { Store } from '@ngrx/store'
+import { createTeam } from 'src/app/store/teams/teams.actions'
+import { TeamsState } from 'src/app/store/teams/teams.reducer'
 
 @Component({
   selector: 'unify-add-teams-widget',
@@ -14,7 +17,7 @@ export class AddTeamsWidgetComponent implements OnInit {
     teamName: new FormControl('', [Validators.required]),
   })
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly store: Store<TeamsState>) {}
 
   private get f() {
     return this.form.controls
@@ -34,12 +37,7 @@ export class AddTeamsWidgetComponent implements OnInit {
     }
 
     const teamName = this.f.teamName.value
-    // TODO this needs to be an NGRX action/effect
-    this.http.post(`/api/teams/create`, { teamName }).subscribe(() => {
-      this.teamCreatedMessage = 'Successfully created new team: ' + teamName
-      this.f.teamName.setValue('')
-      setTimeout(() => (this.teamCreatedMessage = ''), 2000)
-    })
+    this.store.dispatch(createTeam({ data: { teamName } }))
   }
 
   fieldIsInvalid(fieldName: string): boolean {

@@ -15,12 +15,20 @@ export const initialState: TeamsState = {
 export const reducer = createReducer(
   initialState,
   on(
-    fromTeamsActions.sendTeamsGetAllSuccess,
+    fromTeamsActions.getAllTeamsSuccess,
     (state: TeamsState, action: { data: Team[] }) => ({
       teams: action.data,
     })
   ),
-  on(fromTeamsActions.sendTeamsGetAllFailure, (state: TeamsState, action) => ({
+  on(fromTeamsActions.getAllTeamsFailure, (state: TeamsState, action) => ({
     teams: [],
-  }))
+  })),
+
+  on(
+    fromTeamsActions.createTeamSuccess,
+    (state: TeamsState, action: { data: Team }) => {
+      console.log('Create team success', state, action)
+      return { teams: [...state.teams, action.data] }
+    }
+  )
 )

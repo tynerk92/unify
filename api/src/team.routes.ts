@@ -1,6 +1,6 @@
 import Express from 'express'
 import db from './db'
-import { Document, WithId } from 'mongodb'
+import { Document, InsertOneResult, ObjectId, WithId } from 'mongodb'
 import { HttpStatus } from './http-status-codes'
 
 interface Team extends WithId<Document> {
@@ -24,9 +24,14 @@ router.post('/create', (req: Express.Request, res: Express.Response) => {
       name: teamName,
       userIds: [],
     } as Team)
-    .then(() => {
-      res.sendStatus(HttpStatus.NO_CONTENT)
-    })
+    .then((data: InsertOneResult<Document>) =>
+      db
+        .collection('teams')
+        .findOne(data.insertedId)
+        .then((data) => {
+          res.send(data)
+        })
+    )
     .catch(() => {
       res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     })

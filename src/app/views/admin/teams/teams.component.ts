@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { Team } from 'src/app/models/db/team.model'
-import { getAllTeams } from 'src/app/store/teams/teams.actions'
+import { createTeam, getAllTeams } from 'src/app/store/teams/teams.actions'
 import { TeamsState } from 'src/app/store/teams/teams.reducer'
 import { selectAllTeams } from 'src/app/store/teams/teams.selectors'
 
@@ -33,7 +33,7 @@ export class TeamsComponent implements OnInit {
     if (this.createTeamForm.valid) {
       const teamName = this.createTeamForm.controls.name.value
       // TODO this needs to be an NGRX action/effect
-      this.http.post('/api/teams/create', { teamName }).subscribe()
+      this.store.dispatch(createTeam({ data: { teamName } }))
     }
   }
 }

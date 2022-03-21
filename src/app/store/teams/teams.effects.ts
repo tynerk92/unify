@@ -13,12 +13,23 @@ export class TeamsEffects {
       ofType(fromTeamsActions.getAllTeams),
       mergeMap((action) =>
         this.teamsService.getTeams().pipe(
-          map((data: Team[]) => {
-            console.log('Teams Service -- Get Teams -- Effect', data)
-            return fromTeamsActions.sendTeamsGetAllSuccess({ data })
-          }),
+          map((data: Team[]) => fromTeamsActions.getAllTeamsSuccess({ data })),
           catchError((error) =>
-            of(fromTeamsActions.sendTeamsGetAllFailure({ error }))
+            of(fromTeamsActions.getAllTeamsFailure({ error }))
+          )
+        )
+      )
+    )
+  })
+
+  createTeam$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(fromTeamsActions.createTeam),
+      mergeMap((action) =>
+        this.teamsService.createNewTeam(action.data.teamName).pipe(
+          map((data: Team) => fromTeamsActions.createTeamSuccess({ data })),
+          catchError((error) =>
+            of(fromTeamsActions.createTeamFailure({ error }))
           )
         )
       )
