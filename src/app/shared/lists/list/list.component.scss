@@ -1,0 +1,33 @@
+.u-list-container {
+  width: 100%;
+  border-radius: var(--u-border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--u-clr-light);
+  margin-top: var(--u-space-16);
+  margin-bottom: var(--u-space-16);
+
+  .u-header-container {
+    display: grid;
+  }
+
+  ::ng-deep {
+    unify-list-item {
+      .u-list-item {
+        background-color: var(--u-clr-neutral);
+        border-bottom: 1px solid var(--u-clr-light);
+      }
+
+      &:nth-of-type(2n) {
+        .u-list-item {
+          background-color: var(--u-clr-white);
+        }
+      }
+
+      &:last-of-type {
+        .u-list-item {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

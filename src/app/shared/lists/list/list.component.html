@@ -1,0 +1,10 @@
+<div class="u-list-container">
+  <unify-list-item>
+    <div class="u-header-container" #headerRow>
+      <span *ngFor="let header of listHeaders">
+        <strong>{{ header }}</strong>
+      </span>
+    </div>
+  </unify-list-item>
+  <ng-content></ng-content>
+</div>

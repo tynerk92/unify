@@ -1,1 +1,24 @@
-<p>teams works!</p>
+<h1>Teams</h1>
+<unify-card-list>
+  <unify-card-list-item *ngFor="let team of teams" [title]="team.name">
+    <div class="u-team-list-item-content">
+      <unify-list [listHeaders]="['Username', 'ID']">
+        <unify-list-item [columns]="2" *ngFor="let user of team.users">
+          <span>{{ user.username }}</span>
+          <span>{{ user._id }}</span>
+        </unify-list-item>
+      </unify-list>
+      <button class="u-error">Remove Team</button>
+    </div>
+  </unify-card-list-item>
+</unify-card-list>
+<form (ngSubmit)="submitCreateTeam()" [formGroup]="createTeamForm">
+  <label for="teams-list-add-name">Team Name</label>
+  <input
+    type="text"
+    name="teams-list-add-name"
+    id="teams-list-add-name"
+    formControlName="name"
+  />
+  <button type="submit">Create Team</button>
+</form>
