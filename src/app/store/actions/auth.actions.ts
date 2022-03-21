@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store'
-import { Auth } from 'src/app/shared/models/app/auth.model'
-import { User } from 'src/app/shared/models/db/user.model'
+import { Auth } from 'src/app/models/app/auth.model'
+import { User } from 'src/app/models/db/user.model'
 
 export enum AuthActions {
   LOGIN = '[Login Component] Login',

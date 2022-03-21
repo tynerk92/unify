@@ -3,21 +3,19 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppComponent } from './app.component'
-import { ToolbarComponent } from './toolbar/toolbar.component'
-import { SidebarComponent } from './sidebar/sidebar.component'
-import { ContentComponent } from './content/content.component'
 import { ModalModule } from './shared/modal/modal.module'
-import { LoginModule } from './login/login.module'
 import { StoreModule } from '@ngrx/store'
 import { reducers, metaReducers } from './store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
 import { EffectsModule } from '@ngrx/effects'
 import { AuthEffects } from './store/effects/auth.effects'
-import { DashboardModule } from './content/dashboard/dashboard.module'
-import { SidebarModule } from './sidebar/sidebar.module'
 import { RouterModule } from '@angular/router'
 import AppRoutes from './app.routes'
+import { ToolbarComponent } from './layout/toolbar/toolbar.component'
+import { ContentComponent } from './layout/content/content.component'
+import { LoginModule } from './views/login/login.module'
+import { SidebarModule } from './layout/sidebar/sidebar.module'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
@@ -26,7 +24,6 @@ import AppRoutes from './app.routes'
     HttpClientModule,
     ModalModule,
     LoginModule,
-    DashboardModule,
     SidebarModule,
     StoreModule.forRoot(reducers, {
       metaReducers,

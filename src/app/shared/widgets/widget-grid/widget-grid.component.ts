@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -12,28 +13,36 @@ import {
   templateUrl: './widget-grid.component.html',
   styleUrls: ['./widget-grid.component.scss'],
 })
-export class WidgetGridComponent implements OnInit, AfterContentInit {
+export class WidgetGridComponent implements OnInit, AfterViewInit {
   @ViewChild('grid', { read: ElementRef }) grid: ElementRef
 
-  private toolbarWidth: number
+  private sidebarWidth: number
   private horizontalContentPadding: number
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     const docElement = getComputedStyle(document.documentElement)
-    this.toolbarWidth = this.convertRemToPixels(
+    this.sidebarWidth = this.convertRemToPixels(
       parseFloat(docElement.getPropertyValue('--u-sidebar-width'))
     )
     this.horizontalContentPadding = this.convertRemToPixels(
       parseFloat(docElement.getPropertyValue('--u-content-horizontal-padding'))
     )
+
+    this.updateGridColumns(window.innerWidth, this.calculateTargetWidth())
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
+    const target = event.target as Window
+
+    this.updateGridColumns(target.innerWidth, this.calculateTargetWidth())
+  }
+
+  private calculateTargetWidth() {
     const gridElement = getComputedStyle(this.grid.nativeElement)
     const widgetMinWidth = this.convertRemToPixels(
       parseFloat(gridElement.getPropertyValue('--widget-min-width'))
@@ -44,15 +53,16 @@ export class WidgetGridComponent implements OnInit, AfterContentInit {
     const widgetColumns = parseInt(
       gridElement.getPropertyValue('--widget-initial-columns')
     )
-    const targetWidth =
+    return (
       widgetMinWidth * widgetColumns +
       widgetGap * (widgetColumns - 1) +
-      this.toolbarWidth +
+      this.sidebarWidth +
       this.horizontalContentPadding * 2
+    )
+  }
 
-    const target = event.target as Window
-
-    if (target.innerWidth <= targetWidth) {
+  private updateGridColumns(innerWidth: number, targetWidth: number) {
+    if (innerWidth <= targetWidth) {
       this.grid.nativeElement.style.setProperty('--widget-columns', '2')
     } else {
       this.grid.nativeElement.style.setProperty(

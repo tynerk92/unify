@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import { User } from './shared/models/db/user.model'
+import { User } from './models/db/user.model'
 import { AppState } from './store'
 import { selectActiveUser } from './store/selectors/auth.selectors'
 

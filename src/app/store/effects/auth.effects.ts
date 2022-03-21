@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
-import { LoginService } from 'src/app/login/login.service'
 import * as fromAuthActions from '../actions/auth.actions'
 import { mergeMap, map, catchError } from 'rxjs/operators'
-import { User, UserRole } from 'src/app/shared/models/db/user.model'
+import { User, UserRole } from 'src/app/models/db/user.model'
 import { of } from 'rxjs'
 import { Router } from '@angular/router'
 import { Action } from '@ngrx/store'
+import { LoginService } from 'src/app/views/login/login.service'
 
 @Injectable()
 export class AuthEffects {
