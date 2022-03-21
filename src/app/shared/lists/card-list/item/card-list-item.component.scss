@@ -1,0 +1,23 @@
+.u-card-list-item {
+  background-color: var(--u-clr-white);
+  box-shadow: var(--u-card-shadow);
+  border-radius: var(--u-card-border-radius);
+  padding: var(--u-card-padding);
+  margin-bottom: var(--u-space-16);
+
+  .u-card-list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    .u-card-list-item-expand-icon {
+      width: var(--u-space-32);
+      height: var(--u-space-32);
+    }
+  }
+
+  .u-card-list-item-content {
+    overflow: hidden;
+  }
+}

@@ -27,13 +27,19 @@
   --u-clr-primary: #6c63ff;
   --u-clr-neutral: #ececec;
   --u-clr-white: #f3f3f3;
+  --u-clr-light: #999999;
   --u-clr-dark: #535353;
   --u-clr-black: #1d1d1d;
-  --u-clr-error: rgb(255, 74, 74);
+  --u-clr-error: #ff4a4a;
 
   // UI
   --u-sidebar-width: var(--u-space-256);
   --u-content-horizontal-padding: var(--u-space-32);
+
+  // Cards
+  --u-card-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  --u-card-border-radius: var(--u-border-radius-md);
+  --u-card-padding: var(--u-space-16);
 }
 
 h1,
@@ -47,7 +53,17 @@ h6 {
 }
 
 button {
+  border: none;
+  padding: var(--u-space-8) var(--u-space-16);
+  color: var(--u-clr-white);
+  font-size: 1rem;
+  border-radius: var(--u-border-radius-sm);
   cursor: pointer;
+
+  &.u-error {
+    background-color: var(--u-clr-error);
+    color: var(--u-clr-white);
+  }
 }
 
 form {
@@ -75,13 +91,8 @@ form {
   }
 
   button[type='submit'] {
-    background-color: var(--u-clr-primary);
-    border: none;
-    padding: var(--u-space-8) var(--u-space-16);
-    color: var(--u-clr-white);
-    font-size: 1rem;
-    border-radius: var(--u-border-radius-sm);
     margin-top: var(--u-space-16);
+    background-color: var(--u-clr-primary);
 
     &:focus-visible {
       outline: solid 2px var(--u-clr-dark);

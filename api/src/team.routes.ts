@@ -32,4 +32,13 @@ router.post('/create', (req: Express.Request, res: Express.Response) => {
     })
 })
 
+router.get('/list', (req: Express.Request, res: Express.Response) => {
+  db.collection('teams')
+    .find()
+    .toArray()
+    .then((data) => {
+      res.send(data)
+    })
+})
+
 export default router

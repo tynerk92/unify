@@ -14,8 +14,15 @@ const routes: Routes = [
   },
   {
     path: 'teams',
-    component: TeamsComponent,
-    canActivate: [AuthGuard, AdminGuard],
+    loadChildren: () =>
+      import('./teams/teams.module').then((m) => m.TeamsModule),
+    canLoad: [AuthGuard, AdminGuard],
+    children: [
+      {
+        path: '',
+        component: TeamsComponent,
+      },
+    ],
   },
 ]
 

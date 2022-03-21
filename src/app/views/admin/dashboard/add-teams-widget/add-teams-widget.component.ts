@@ -34,7 +34,7 @@ export class AddTeamsWidgetComponent implements OnInit {
     }
 
     const teamName = this.f.teamName.value
-
+    // TODO this needs to be an NGRX action/effect
     this.http.post(`/api/teams/create`, { teamName }).subscribe(() => {
       this.teamCreatedMessage = 'Successfully created new team: ' + teamName
       this.f.teamName.setValue('')
