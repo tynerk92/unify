@@ -1,6 +1,6 @@
 <h1>Teams</h1>
 <unify-card-list>
-  <unify-card-list-item *ngFor="let team of teams" [title]="team.name">
+  <unify-card-list-item *ngFor="let team of teams$ | async" [title]="team.name">
     <div class="u-team-list-item-content">
       <unify-list [listHeaders]="['Username', 'ID']">
         <unify-list-item [columns]="2" *ngFor="let user of team.users">

@@ -9,7 +9,7 @@ import { reducers, metaReducers } from './store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
 import { EffectsModule } from '@ngrx/effects'
-import { AuthEffects } from './store/effects/auth.effects'
+import { AuthEffects } from './store/auth/auth.effects'
 import { RouterModule } from '@angular/router'
 import { ToolbarComponent } from './layout/toolbar/toolbar.component'
 import { ContentComponent } from './layout/content/content.component'
@@ -17,6 +17,7 @@ import { LoginModule } from './views/login/login.module'
 import { SidebarModule } from './layout/sidebar/sidebar.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import AppRoutes from './app.routes'
+import { TeamsEffects } from './store/teams/teams.effects'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
@@ -35,7 +36,7 @@ import AppRoutes from './app.routes'
     }),
     RouterModule.forRoot(AppRoutes),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, TeamsEffects]),
     BrowserAnimationsModule,
   ],
   providers: [],

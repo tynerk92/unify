@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { select, Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
 import { Team } from 'src/app/models/db/team.model'
+import { getAllTeams } from 'src/app/store/teams/teams.actions'
+import { TeamsState } from 'src/app/store/teams/teams.reducer'
+import { selectAllTeams } from 'src/app/store/teams/teams.selectors'
 
 @Component({
   selector: 'unify-teams',
@@ -9,18 +14,19 @@ import { Team } from 'src/app/models/db/team.model'
   styleUrls: ['./teams.component.scss'],
 })
 export class TeamsComponent implements OnInit {
-  teams: Team[]
+  teams$: Observable<Team[]>
   createTeamForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
   })
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly store: Store<TeamsState>
+  ) {}
 
   ngOnInit(): void {
-    // TODO this needs to be an NGRX action/effect
-    this.http.get<Team[]>('/api/teams/list').subscribe((teams: Team[]) => {
-      this.teams = teams
-    })
+    this.store.dispatch(getAllTeams())
+    this.teams$ = this.store.pipe(select(selectAllTeams))
   }
 
   submitCreateTeam(): void {

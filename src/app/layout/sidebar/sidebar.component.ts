@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { UserRole } from 'src/app/models/db/user.model'
 import { AppState } from 'src/app/store'
-import { selectUserRole } from 'src/app/store/selectors/auth.selectors'
+import { selectUserRole } from 'src/app/store/auth/auth.selectors'
 
 @Component({
   selector: 'unify-sidebar',

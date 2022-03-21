@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { User } from './models/db/user.model'
 import { AppState } from './store'
-import { selectActiveUser } from './store/selectors/auth.selectors'
+import { selectActiveUser } from './store/auth/auth.selectors'
 
 @Component({
   selector: 'app-root',

@@ -11,7 +11,7 @@ import {
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { AppState } from '../store'
-import { userLoggedIn } from '../store/selectors/auth.selectors'
+import { userLoggedIn } from '../store/auth/auth.selectors'
 
 @Injectable({
   providedIn: 'root',

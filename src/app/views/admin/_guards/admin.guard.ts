@@ -11,7 +11,7 @@ import {
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { AppState } from 'src/app/store'
-import { hasAdminRole } from 'src/app/store/selectors/auth.selectors'
+import { hasAdminRole } from 'src/app/store/auth/auth.selectors'
 
 @Injectable({
   providedIn: 'root',
