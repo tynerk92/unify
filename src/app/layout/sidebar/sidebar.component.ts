@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import { UserRole } from 'src/app/shared/models/db/user.model'
+import { UserRole } from 'src/app/models/db/user.model'
 import { AppState } from 'src/app/store'
 import { selectUserRole } from 'src/app/store/selectors/auth.selectors'
 
 @Component({
-  selector: 'unify-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'unify-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class SidebarComponent implements OnInit {
   userRole$: Observable<UserRole>
   userRoles = UserRole
 

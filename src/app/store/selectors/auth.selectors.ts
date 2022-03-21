@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
+import { User, UserRole } from 'src/app/models/db/user.model'
 import { authFeatureKey, AuthState } from '../reducers/auth.reducer'
 
 export const selectAuthFeature =
@@ -6,10 +7,21 @@ export const selectAuthFeature =
 
 export const selectUserRole = createSelector(
   selectAuthFeature,
-  (authState: AuthState) => authState.user!.role
+  (authState: AuthState): UserRole => authState.user!.role
 )
 
 export const selectActiveUser = createSelector(
   selectAuthFeature,
-  (authState: AuthState) => authState.user!
+  (authState: AuthState): User => authState.user!
+)
+
+export const userLoggedIn = createSelector(
+  selectAuthFeature,
+  (authState: AuthState): boolean =>
+    Boolean(authState.user && authState.user._id)
+)
+
+export const hasAdminRole = createSelector(
+  selectAuthFeature,
+  (authState: AuthState): boolean => authState.user!.role === UserRole.ADMIN
 )

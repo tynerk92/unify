@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import { User } from './shared/models/db/user.model'
+import { User } from './models/db/user.model'
 import { AppState } from './store'
 import { selectActiveUser } from './store/selectors/auth.selectors'
 
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private readonly userStore: Store<AppState>) {
     this.activeUser$ = this.userStore.pipe(select(selectActiveUser))
 
-    this.activeUser$.subscribe((activeUser) => {
+    this.activeUser$.subscribe((activeUser: User) => {
       this.userLoggedIn = Boolean(activeUser && activeUser._id)
     })
   }
