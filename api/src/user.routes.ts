@@ -3,13 +3,7 @@ import bcrypt from 'bcrypt'
 import db from './db'
 import { Document, WithId } from 'mongodb'
 import { HttpStatus } from './http-status-codes'
-
-interface User extends WithId<Document> {
-  username: string
-  password: string
-  salt: string
-  role: string
-}
+import User from './users/user.model'
 
 const router = Express.Router()
 
@@ -33,10 +27,10 @@ router.post('/login', (req: Express.Request, res: Express.Response) => {
             role: potentialUser.role,
           })
         } else {
-          res.sendStatus(401)
+          res.sendStatus(HttpStatus.UNAUTHORIZED)
         }
       } else {
-        res.sendStatus(401)
+        res.sendStatus(HttpStatus.UNAUTHORIZED)
       }
     })
     .catch(() => {
@@ -47,20 +41,46 @@ router.post('/login', (req: Express.Request, res: Express.Response) => {
 router.post('/register', (req: Express.Request, res: Express.Response) => {
   const username = req.body.username
   const password = req.body.password
+  const role = req.body.role
 
   const salt = bcrypt.genSaltSync(10)
-  const hash = bcrypt.hashSync(password, salt)
+  const passwordHash = bcrypt.hashSync(password, salt)
 
   db.collection('users')
     .insertOne({
       username,
       salt,
-      password: hash,
-      role: 'ADMIN',
+      password: passwordHash,
+      role,
     })
     .then((data) => {
       res.send(data)
     })
+})
+
+router.get('/search', async (req: Express.Request, res: Express.Response) => {
+  const partialUserName = req.query.username
+
+  const result = await db.collection('users').aggregate([
+    {
+      $search: {
+        index: 'test',
+        autocomplete: {
+          query: partialUserName,
+          path: 'username',
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        username: 1,
+        role: 1,
+      },
+    },
+  ])
+
+  res.send(await result.toArray())
 })
 
 export default router

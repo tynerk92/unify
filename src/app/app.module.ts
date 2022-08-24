@@ -18,6 +18,7 @@ import { SidebarModule } from './layout/sidebar/sidebar.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import AppRoutes from './app.routes'
 import { TeamsEffects } from './store/teams/teams.effects'
+import { UsersEffects } from './store/users/users.effects'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
@@ -36,7 +37,7 @@ import { TeamsEffects } from './store/teams/teams.effects'
     }),
     RouterModule.forRoot(AppRoutes),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AuthEffects, TeamsEffects]),
+    EffectsModule.forRoot([AuthEffects, TeamsEffects, UsersEffects]),
     BrowserAnimationsModule,
   ],
   providers: [],
