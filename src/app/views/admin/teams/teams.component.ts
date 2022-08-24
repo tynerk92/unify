@@ -32,7 +32,6 @@ export class TeamsComponent implements OnInit {
   submitCreateTeam(): void {
     if (this.createTeamForm.valid) {
       const teamName = this.createTeamForm.controls.name.value
-      // TODO this needs to be an NGRX action/effect
       this.store.dispatch(createTeam({ data: { teamName } }))
     }
   }
