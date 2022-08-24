@@ -1,0 +1,13 @@
+<h1>Users</h1>
+<form>
+  <label for="user-search">Search</label>
+  <input type="text" id="user-search" (keyup)="searchByUsername($event)" />
+</form>
+
+<unify-list [listHeaders]="['Username', 'Role', 'ID']">
+  <unify-list-item [columns]="3" *ngFor="let user of users$ | async">
+    <span>{{ user.username }}</span>
+    <span>{{ user.role }}</span>
+    <span>{{ user._id }}</span>
+  </unify-list-item>
+</unify-list>
