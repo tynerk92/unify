@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { Team } from 'src/app/models/db/team.model'
@@ -15,8 +15,8 @@ import { selectAllTeams } from 'src/app/store/teams/teams.selectors'
 })
 export class TeamsComponent implements OnInit {
   teams$: Observable<Team[]>
-  createTeamForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+  createTeamForm: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
   })
 
   constructor(
