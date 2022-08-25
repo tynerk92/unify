@@ -18,25 +18,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./teams/teams.module').then((m) => m.TeamsModule),
     canLoad: [AuthGuard, AdminGuard],
-    children: [
-      {
-        path: '',
-        component: TeamsComponent,
-      },
-    ],
   },
   {
     path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
     canLoad: [AuthGuard, AdminGuard],
-    children: [
-      {
-        path: '',
-        component: UsersComponent
-      }
-    ]
-  }
+  },
 ]
 
 @NgModule({

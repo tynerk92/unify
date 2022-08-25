@@ -1,8 +1,14 @@
 <h1>Users</h1>
-<form>
-  <label for="user-search">Search</label>
-  <input type="text" id="user-search" (keyup)="searchByUsername($event)" />
-</form>
+
+<div class="u-users-tools">
+  <form>
+    <label for="user-search">Search</label>
+    <input type="text" id="user-search" (keyup)="searchByUsername($event)" />
+  </form>
+  <span class="u-users-tools-add-button-container">
+    <button type="button" (click)="openAddUserDialog()">Add User</button>
+  </span>
+</div>
 
 <unify-list [listHeaders]="['Username', 'Role', 'ID']">
   <unify-list-item [columns]="3" *ngFor="let user of users$ | async">

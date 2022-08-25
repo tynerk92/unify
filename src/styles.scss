@@ -60,6 +60,7 @@ button {
   font-size: 1rem;
   border-radius: var(--u-border-radius-sm);
   cursor: pointer;
+  background-color: var(--u-clr-primary);
 
   &.u-error {
     background-color: var(--u-clr-error);
@@ -93,7 +94,6 @@ form {
 
   button[type='submit'] {
     margin-top: var(--u-space-16);
-    background-color: var(--u-clr-primary);
 
     &:focus-visible {
       outline: solid 2px var(--u-clr-dark);
@@ -107,4 +107,10 @@ form {
     padding: 0;
     margin: 0 0 var(--u-space-8) 0;
   }
+}
+
+// Angular CDK overrides
+.u-overlay-backdrop {
+  opacity: 0.3 !important;
+  background-color: var(--u-clr-black);
 }
