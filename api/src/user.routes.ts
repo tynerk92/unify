@@ -58,29 +58,58 @@ router.post('/register', (req: Express.Request, res: Express.Response) => {
     })
 })
 
+router.get('/list', async (req: Express.Request, res: Express.Response) => {
+  const page: number = req.query.page ? Number(req.query.page) : 0
+  const perPage: number = Number(req.query.perPage)
+
+  const result = await db
+    .collection('users')
+    .aggregate([
+      {
+        $project: {
+          _id: 1,
+          username: 1,
+          role: 1,
+        },
+      },
+      {
+        $skip: page * perPage,
+      },
+      {
+        $limit: perPage,
+      },
+    ])
+    .toArray()
+
+  res.send(result)
+})
+
 router.get('/search', async (req: Express.Request, res: Express.Response) => {
   const partialUserName = req.query.username
 
-  const result = await db.collection('users').aggregate([
-    {
-      $search: {
-        index: 'test',
-        autocomplete: {
-          query: partialUserName,
-          path: 'username',
+  const result = await db
+    .collection('users')
+    .aggregate([
+      {
+        $search: {
+          index: 'test',
+          autocomplete: {
+            query: partialUserName,
+            path: 'username',
+          },
         },
       },
-    },
-    {
-      $project: {
-        _id: 1,
-        username: 1,
-        role: 1,
+      {
+        $project: {
+          _id: 1,
+          username: 1,
+          role: 1,
+        },
       },
-    },
-  ])
+    ])
+    .toArray()
 
-  res.send(await result.toArray())
+  res.send(result)
 })
 
 export default router

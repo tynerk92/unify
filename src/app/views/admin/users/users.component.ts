@@ -2,14 +2,29 @@ import { Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { User } from 'src/app/models/db/user.model'
-import { searchByUsername } from 'src/app/store/users/users.actions'
+import {
+  getAllUsers,
+  searchByUsername,
+} from 'src/app/store/users/users.actions'
 import { UserSearchResultsState } from 'src/app/store/users/users.reducer'
-import { searchForUserByPartialUsername } from 'src/app/store/users/users.selectors'
+import {
+  allUsers,
+  searchForUserByPartialUsername,
+} from 'src/app/store/users/users.selectors'
 import {
   CreateUserComponent,
   CreateUserFormData,
 } from './create-user/create-user.component'
 import { Dialog } from '@angular/cdk/dialog'
+
+/*
+  Notes:
+
+  When the page loads, we should display the first X number of users, paginated
+  If the search bar is empty, same
+
+  If there is a search, only display those users
+*/
 
 @Component({
   selector: 'unify-users',
@@ -27,7 +42,8 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.users$ = this.store.pipe(select(searchForUserByPartialUsername))
+    this.store.dispatch(getAllUsers({ page: 0, perPage: 10 }))
+    this.users$ = this.store.pipe(select(allUsers))
   }
 
   openAddUserDialog(): void {

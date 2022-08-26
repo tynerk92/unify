@@ -10,3 +10,9 @@ export const searchForUserByPartialUsername = createSelector(
   (userSearchResultsState: UserSearchResultsState): User[] =>
     userSearchResultsState.users
 )
+
+export const allUsers = createSelector(
+  selectUsersFeature,
+  (userSearchResultsState: UserSearchResultsState): User[] =>
+    userSearchResultsState.users
+)

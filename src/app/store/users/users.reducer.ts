@@ -28,5 +28,13 @@ export const reducer = createReducer(
   on(fromUsersActions.searchByUsernameError, () => ({
     users: [],
     error: 'There was an error while performing the search.',
-  }))
+  })),
+  on(
+    fromUsersActions.getAllUsersSuccess,
+    (_: UserSearchResultsState, action: { data: User[] }) => {
+      return {
+        users: action.data,
+      }
+    }
+  )
 )

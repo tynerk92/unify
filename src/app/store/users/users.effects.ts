@@ -8,6 +8,22 @@ import * as fromUsersActions from './users.actions'
 
 @Injectable()
 export class UsersEffects {
+  getAllUsers$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(fromUsersActions.getAllUsers),
+      switchMap((action) =>
+        this.usersService.getAllUsers(action.page, action.perPage).pipe(
+          map((users: User[]) =>
+            fromUsersActions.getAllUsersSuccess({ data: users })
+          ),
+          catchError((error) =>
+            of(fromUsersActions.getAllUsersError({ error }))
+          )
+        )
+      )
+    )
+  })
+
   searchForUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromUsersActions.searchByUsername),

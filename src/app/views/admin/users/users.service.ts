@@ -9,6 +9,12 @@ import { User } from '../../../models/db/user.model'
 export class UsersService {
   constructor(private http: HttpClient) {}
 
+  getAllUsers(page: number, perPage: number): Observable<User[]> {
+    return this.http.get<User[]>(
+      `/api/user/list?page=${page}&perPage=${perPage}`
+    )
+  }
+
   search(searchTerm: string): Observable<User[]> {
     return this.http.get<User[]>(`/api/user/search?username=${searchTerm}`)
   }
