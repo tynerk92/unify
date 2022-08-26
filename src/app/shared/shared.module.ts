@@ -7,7 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { ListComponent } from './lists/list/list.component'
 import { CardListComponent } from './lists/card-list/card-list.component'
 import { CardListItemComponent } from './lists/card-list/item/card-list-item.component'
-import { ListItemComponent } from './lists/list/item/list-item.component'
+import { ListItemComponent } from './lists/list/item/list-item.component';
+import { ListFilterComponent } from './lists/list/list-filter/list-filter.component'
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ListItemComponent } from './lists/list/item/list-item.component'
     SearchComponent,
     ListComponent,
     ListItemComponent,
+    ListFilterComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [

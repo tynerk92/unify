@@ -58,6 +58,24 @@ router.post('/register', (req: Express.Request, res: Express.Response) => {
     })
 })
 
+router.post('/create', (req: Express.Request, res: Express.Response) => {
+  const name = req.body.name
+  const username = req.body.username
+  const role = req.body.role
+
+  db.collection('users')
+    .insertOne({
+      name,
+      username,
+      salt: '',
+      password: '',
+      role,
+    })
+    .then((data) => {
+      res.send(data)
+    })
+})
+
 router.get('/list', async (req: Express.Request, res: Express.Response) => {
   const page: number = req.query.page ? Number(req.query.page) : 0
   const perPage: number = Number(req.query.perPage)
@@ -67,21 +85,23 @@ router.get('/list', async (req: Express.Request, res: Express.Response) => {
     .aggregate([
       {
         $project: {
-          _id: 1,
+          name: 1,
           username: 1,
           role: 1,
         },
       },
-      {
-        $skip: page * perPage,
-      },
-      {
-        $limit: perPage,
-      },
+      // {
+      //   $skip: page * perPage,
+      // },
+      // {
+      //   $limit: perPage,
+      // },
     ])
     .toArray()
 
-  res.send(result)
+  const count = await db.collection('users').countDocuments()
+
+  res.send({ users: result, count })
 })
 
 router.get('/search', async (req: Express.Request, res: Express.Response) => {
@@ -92,7 +112,7 @@ router.get('/search', async (req: Express.Request, res: Express.Response) => {
     .aggregate([
       {
         $search: {
-          index: 'test',
+          index: 'users-search',
           autocomplete: {
             query: partialUserName,
             path: 'username',
@@ -109,7 +129,7 @@ router.get('/search', async (req: Express.Request, res: Express.Response) => {
     ])
     .toArray()
 
-  res.send(result)
+  res.send({ users: result, count: result.length })
 })
 
 export default router

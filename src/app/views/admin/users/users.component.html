@@ -1,19 +1,20 @@
-<h1>Users</h1>
-
+<h1 class="u-page-title">Users</h1>
+<p class="u-page-subtitle">Find, add, and modify users</p>
 <div class="u-users-tools">
-  <form>
-    <label for="user-search">Search</label>
-    <input type="text" id="user-search" (keyup)="searchByUsername($event)" />
-  </form>
+  <button type="button" (click)="openFilterDialog()">
+    <fa-icon [icon]="['fas', 'filter']"></fa-icon>Filters
+  </button>
   <span class="u-users-tools-add-button-container">
-    <button type="button" (click)="openAddUserDialog()">Add User</button>
+    <button type="button" (click)="openAddUserDialog()">
+      <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>Add User
+    </button>
   </span>
 </div>
 
-<unify-list [listHeaders]="['Username', 'Role', 'ID']">
+<unify-list [listHeaders]="['Name', 'Username', 'Role']">
   <unify-list-item [columns]="3" *ngFor="let user of users$ | async">
+    <span>{{ user.name }}</span>
     <span>{{ user.username }}</span>
     <span>{{ user.role }}</span>
-    <span>{{ user._id }}</span>
   </unify-list-item>
 </unify-list>

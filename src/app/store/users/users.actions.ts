@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store'
 import { CreateTeam } from 'src/app/models/app/team.model'
 import { User } from 'src/app/models/db/user.model'
+import { UserList } from 'src/app/views/admin/users/users.service'
 
 export enum UsersActions {
   GET_USERS = '[Users] Get Users With A Cursor',
@@ -19,7 +20,7 @@ export const getAllUsers = createAction(
 
 export const getAllUsersSuccess = createAction(
   UsersActions.GET_USERS_SUCCESS,
-  props<{ data: User[] }>()
+  props<{ data: UserList }>()
 )
 export const getAllUsersError = createAction(
   UsersActions.GET_USERS_ERROR,
@@ -36,7 +37,7 @@ export const searchByUsername = createAction(
 
 export const searchByUsernameSuccess = createAction(
   UsersActions.SEARCH_USERS_SUCCESS,
-  props<{ data: User[] }>()
+  props<{ data: UserList }>()
 )
 
 export const searchByUsernameError = createAction(

@@ -7,6 +7,7 @@ import { DialogModule } from '@angular/cdk/dialog'
 import { UsersRoutingModule } from './users-routing.module'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { ReactiveFormsModule } from '@angular/forms'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [UsersComponent, CreateUserComponent],
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms'
     UsersRoutingModule,
     OverlayModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
 })
 export class UsersModule {}

@@ -19,6 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import AppRoutes from './app.routes'
 import { TeamsEffects } from './store/teams/teams.effects'
 import { UsersEffects } from './store/users/users.effects'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome'
+
+import { faFilter, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
@@ -39,8 +43,13 @@ import { UsersEffects } from './store/users/users.effects'
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AuthEffects, TeamsEffects, UsersEffects]),
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(fontLibrary: FaIconLibrary) {
+    fontLibrary.addIcons(faFilter, faUserPlus)
+  }
+}

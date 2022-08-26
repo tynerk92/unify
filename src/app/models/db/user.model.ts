@@ -2,6 +2,7 @@ export interface User {
   _id: string
   username: string
   role: UserRole
+  name: string
 }
 
 export enum UserRole {

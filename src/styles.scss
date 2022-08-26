@@ -53,6 +53,14 @@ h6 {
   margin-bottom: 0.6em;
 }
 
+.u-page-title {
+  margin-bottom: 0;
+}
+
+.u-page-subtitle {
+  margin-bottom: 1rem;
+}
+
 button {
   border: none;
   padding: var(--u-space-8) var(--u-space-16);
@@ -113,4 +121,20 @@ form {
 .u-overlay-backdrop {
   opacity: 0.3 !important;
   background-color: var(--u-clr-black);
+}
+
+.cdk-dialog-container {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+// Fontawesome overrides
+.svg-inline--fa {
+  padding: 0 4px 0 0;
+
+  path {
+    color: var(--u-clr-white);
+  }
 }

@@ -16,3 +16,9 @@ export const allUsers = createSelector(
   (userSearchResultsState: UserSearchResultsState): User[] =>
     userSearchResultsState.users
 )
+
+export const allUsersCount = createSelector(
+  selectUsersFeature,
+  (userSearchResultsState: UserSearchResultsState): number =>
+    userSearchResultsState.count
+)

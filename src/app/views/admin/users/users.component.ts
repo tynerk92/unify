@@ -7,15 +7,15 @@ import {
   searchByUsername,
 } from 'src/app/store/users/users.actions'
 import { UserSearchResultsState } from 'src/app/store/users/users.reducer'
-import {
-  allUsers,
-  searchForUserByPartialUsername,
-} from 'src/app/store/users/users.selectors'
+import { allUsers } from 'src/app/store/users/users.selectors'
 import {
   CreateUserComponent,
   CreateUserFormData,
 } from './create-user/create-user.component'
 import { Dialog } from '@angular/cdk/dialog'
+import { ListFilterComponent } from 'src/app/shared/lists/list/list-filter/list-filter.component'
+import { faFilter } from '@fortawesome/free-solid-svg-icons'
+import { UsersService } from './users.service'
 
 /*
   Notes:
@@ -33,12 +33,15 @@ import { Dialog } from '@angular/cdk/dialog'
 })
 export class UsersComponent implements OnInit {
   users$: Observable<User[]>
+  totalUsers$: number
+  faFilter = faFilter
 
   private searchTimeout: number = 0
 
   constructor(
     private store: Store<UserSearchResultsState>,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
@@ -53,8 +56,12 @@ export class UsersComponent implements OnInit {
     addUserDialog.closed.subscribe((result: CreateUserFormData | undefined) => {
       if (!result) return
 
-      // TODO send http request to add new user here
+      this.usersService.createUser(result).subscribe((res) => console.log(res))
     })
+  }
+
+  openFilterDialog(): void {
+    const filterDialog = this.dialog.open(ListFilterComponent)
   }
 
   searchByUsername(keyUpEvent: Event) {

@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { catchError, map, switchMap } from 'rxjs/operators'
 import { User } from 'src/app/models/db/user.model'
-import { UsersService } from 'src/app/views/admin/users/users.service'
+import { UserList, UsersService } from 'src/app/views/admin/users/users.service'
 import * as fromUsersActions from './users.actions'
 
 @Injectable()
@@ -13,8 +13,8 @@ export class UsersEffects {
       ofType(fromUsersActions.getAllUsers),
       switchMap((action) =>
         this.usersService.getAllUsers(action.page, action.perPage).pipe(
-          map((users: User[]) =>
-            fromUsersActions.getAllUsersSuccess({ data: users })
+          map((data: UserList) =>
+            fromUsersActions.getAllUsersSuccess({ data })
           ),
           catchError((error) =>
             of(fromUsersActions.getAllUsersError({ error }))
@@ -29,10 +29,10 @@ export class UsersEffects {
       ofType(fromUsersActions.searchByUsername),
       switchMap((action) =>
         this.usersService.search(action.searchTerm).pipe(
-          map((users: User[]) => {
-            console.log('Found users:', users)
+          map((data: UserList) => {
+            console.log('The returned search data', data)
             return fromUsersActions.searchByUsernameSuccess({
-              data: users,
+              data,
             })
           }),
           catchError((error) =>
