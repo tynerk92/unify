@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { createTeam } from 'src/app/store/teams/teams.actions'
 import { TeamsState } from 'src/app/store/teams/teams.reducer'
@@ -13,8 +13,8 @@ import { TeamsState } from 'src/app/store/teams/teams.reducer'
 export class AddTeamsWidgetComponent implements OnInit {
   teamCreatedMessage = ''
 
-  form: FormGroup = new FormGroup({
-    teamName: new FormControl('', [Validators.required]),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    teamName: new UntypedFormControl('', [Validators.required]),
   })
 
   constructor(private readonly store: Store<TeamsState>) {}

@@ -10,9 +10,11 @@ export enum TeamsActions {
   CREATE_TEAM = '[Teams] Create New Team',
   CREATE_TEAM_SUCCESS = '[Teams] Create New Team Success',
   CREATE_TEAM_FAILURE = '[Teams] Create New Team Failure',
+
+  LOAD_TEAMS = '[Teams] Load Teams'
 }
 
-export const loadTeams = createAction('[Teams] Load Teams')
+export const loadTeams = createAction(TeamsActions.LOAD_TEAMS)
 
 // Get a list of all teams
 export const getAllTeams = createAction(TeamsActions.GET_ALL)

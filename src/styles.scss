@@ -53,6 +53,14 @@ h6 {
   margin-bottom: 0.6em;
 }
 
+.u-page-title {
+  margin-bottom: 0;
+}
+
+.u-page-subtitle {
+  margin-bottom: 1rem;
+}
+
 button {
   border: none;
   padding: var(--u-space-8) var(--u-space-16);
@@ -60,6 +68,7 @@ button {
   font-size: 1rem;
   border-radius: var(--u-border-radius-sm);
   cursor: pointer;
+  background-color: var(--u-clr-primary);
 
   &.u-error {
     background-color: var(--u-clr-error);
@@ -93,7 +102,6 @@ form {
 
   button[type='submit'] {
     margin-top: var(--u-space-16);
-    background-color: var(--u-clr-primary);
 
     &:focus-visible {
       outline: solid 2px var(--u-clr-dark);
@@ -106,5 +114,27 @@ form {
     display: block;
     padding: 0;
     margin: 0 0 var(--u-space-8) 0;
+  }
+}
+
+// Angular CDK overrides
+.u-overlay-backdrop {
+  opacity: 0.3 !important;
+  background-color: var(--u-clr-black);
+}
+
+.cdk-dialog-container {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+// Fontawesome overrides
+.svg-inline--fa {
+  padding: 0 4px 0 0;
+
+  path {
+    color: var(--u-clr-white);
   }
 }

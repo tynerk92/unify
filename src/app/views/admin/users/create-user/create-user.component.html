@@ -1,0 +1,18 @@
+<div>
+  <form (submit)="onSubmit()" [formGroup]="formGroup">
+    <label for="create-user-name">Full Name</label>
+    <input type="text" id="create-user-name" formControlName="name" />
+
+    <label for="create-user-username">Username</label>
+    <input type="text" id="create-user-username" formControlName="username" />
+
+    <label for="create-user-role">Role</label>
+    <select name="role" id="create-user-role" formControlName="role">
+      <option value="ADMIN">Administrator</option>
+      <option value="SCRUM_MASTER">Scrum Master</option>
+      <option value="PRODUCT_OWNER">Product Owner</option>
+      <option value="TEAM_MEMBER">Team Member</option>
+    </select>
+    <button type="submit">Create User</button>
+  </form>
+</div>

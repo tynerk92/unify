@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms'
 
 @Component({
   selector: 'unify-search',
@@ -9,8 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms'
 export class SearchComponent implements OnInit {
   @Output() search: EventEmitter<string>
 
-  searchFormGroup: FormGroup = new FormGroup({
-    search: new FormControl(''),
+  searchFormGroup: UntypedFormGroup = new UntypedFormGroup({
+    search: new UntypedFormControl(''),
   })
 
   constructor() {}
