@@ -90,6 +90,7 @@ router.get('/list', async (req: Express.Request, res: Express.Response) => {
           role: 1,
         },
       },
+      // TODO reinstate this skip/limit once pagination is figured out
       // {
       //   $skip: page * perPage,
       // },
