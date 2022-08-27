@@ -7,7 +7,7 @@ export const selectAuthFeature =
 
 export const selectUserRole = createSelector(
   selectAuthFeature,
-  (authState: AuthState): UserRole => authState.user!.role
+  (authState: AuthState): UserRole | undefined => authState.user?.role
 )
 
 export const selectActiveUser = createSelector(

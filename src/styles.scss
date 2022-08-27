@@ -123,11 +123,12 @@ form {
   background-color: var(--u-clr-black);
 }
 
-.cdk-dialog-container {
+.cdk-dialog-container,
+.cdk-overlay-pane {
   display: block;
   background: #fff;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: var(--u-space-8);
+  padding: var(--u-space-16);
 }
 
 // Fontawesome overrides
