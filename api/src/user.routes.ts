@@ -8,14 +8,15 @@ import User from './users/user.model'
 const router = Express.Router()
 
 router.post('/login', (req: Express.Request, res: Express.Response) => {
-  const username = String(req.query.username)
-  const password = String(req.query.password)
+  const username = String(req.body.username)
+  const password = String(req.body.password)
 
   db.collection('users')
     .findOne({
       username,
     })
     .then((potentialUser: User) => {
+      console.log('User:', potentialUser)
       if (potentialUser) {
         const hash = bcrypt.hashSync(password, potentialUser.salt)
         const passwordHash = potentialUser.password

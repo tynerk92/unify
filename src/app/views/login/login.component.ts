@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/store'
 import { login } from 'src/app/store/auth/auth.actions'
@@ -16,10 +20,7 @@ export class LoginComponent implements OnInit {
     password: new UntypedFormControl('', [Validators.required]),
   })
 
-  constructor(
-    private readonly loginService: LoginService,
-    private readonly store: Store<AppState>
-  ) {}
+  constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {}
 

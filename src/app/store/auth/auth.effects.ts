@@ -31,12 +31,13 @@ export class AuthEffects {
             this.router.navigateByUrl('/admin/dashboard')
             break
           case UserRole.TEAM_MEMBER:
+            this.router.navigateByUrl('/user/dashboard')
             break
           default:
             return { type: fromAuthActions.AuthActions.LOGIN_FAILURE }
         }
 
-        return { type: 'NOOP' }
+        return { type: 'NO_OP' }
       })
     )
   })

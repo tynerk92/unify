@@ -19,6 +19,13 @@ const routes: Routes = [
       import('./views/admin/admin.module').then((m) => m.AdminModule),
     canLoad: [AuthGuard, AdminGuard],
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./views/team-member/team-member.module').then(
+        (m) => m.TeamMemberModule
+      ),
+  },
 ]
 
 export default routes

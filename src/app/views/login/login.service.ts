@@ -9,15 +9,12 @@ import { User } from 'src/app/models/db/user.model'
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(
-    private readonly http: HttpClient,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly http: HttpClient) {}
 
   login(authData: Auth): Observable<User> {
-    return this.http.post<User>(
-      `/api/user/login?username=${authData.username}&password=${authData.password}`,
-      null
-    )
+    return this.http.post<User>('/api/user/login', {
+      username: authData.username,
+      password: authData.password,
+    })
   }
 }
