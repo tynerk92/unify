@@ -1,3 +1,27 @@
 <div class="u-toolbar">
-  
+  <div></div>
+  <div
+    class="u-toolbar-user"
+    (click)="toggleAccountOverlay()"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+  >
+    <fa-icon [icon]="['fas', 'circle-user']" size="3x"></fa-icon>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="accountOverlayOpen"
+      [cdkConnectedOverlayHasBackdrop]="true"
+      [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+      (backdropClick)="toggleAccountOverlay()"
+    >
+      <ul class="u-account-overlay-options">
+        <li><fa-icon [icon]="['fas', 'gear']"></fa-icon> Preferences</li>
+        <li (click)="onLogoutClick()">
+          <fa-icon [icon]="['fas', 'arrow-right-from-bracket']"></fa-icon> Log
+          Out
+        </li>
+      </ul>
+    </ng-template>
+  </div>
 </div>

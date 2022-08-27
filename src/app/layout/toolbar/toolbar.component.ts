@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { Overlay } from '@angular/cdk/overlay'
+import { ToolbarService } from './toolbar.service'
 
 @Component({
   selector: 'unify-toolbar',
@@ -6,7 +8,17 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  constructor() {}
+  accountOverlayOpen = false
+
+  constructor(private toolbarService: ToolbarService) {}
 
   ngOnInit(): void {}
+
+  toggleAccountOverlay() {
+    this.accountOverlayOpen = !this.accountOverlayOpen
+  }
+
+  onLogoutClick() {
+    this.toolbarService.logout()
+  }
 }

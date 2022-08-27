@@ -15,7 +15,7 @@ export class AuthEffects {
       ofType(fromAuthActions.login),
       mergeMap((action) =>
         this.loginService.login(action.data).pipe(
-          map((data: User) => fromAuthActions.sendLoginSuccess({ data })),
+          map((data: User) => fromAuthActions.loginSuccess({ data })),
           catchError((error) => of(fromAuthActions.loginFailure({ error })))
         )
       )
@@ -24,7 +24,7 @@ export class AuthEffects {
 
   navigateByRole$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(fromAuthActions.sendLoginSuccess),
+      ofType(fromAuthActions.loginSuccess),
       map((action: { data: User }) => {
         switch (action.data.role) {
           case UserRole.ADMIN:

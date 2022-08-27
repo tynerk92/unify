@@ -21,8 +21,15 @@ import { TeamsEffects } from './store/teams/teams.effects'
 import { UsersEffects } from './store/users/users.effects'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome'
+import { OverlayModule } from '@angular/cdk/overlay'
 
-import { faFilter, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import {
+  faFilter,
+  faUserPlus,
+  faCircleUser,
+  faGear,
+  faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons'
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, ContentComponent],
@@ -44,12 +51,19 @@ import { faFilter, faUserPlus } from '@fortawesome/free-solid-svg-icons'
     EffectsModule.forRoot([AuthEffects, TeamsEffects, UsersEffects]),
     BrowserAnimationsModule,
     FontAwesomeModule,
+    OverlayModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(fontLibrary: FaIconLibrary) {
-    fontLibrary.addIcons(faFilter, faUserPlus)
+    fontLibrary.addIcons(
+      faFilter,
+      faUserPlus,
+      faCircleUser,
+      faGear,
+      faArrowRightFromBracket
+    )
   }
 }
