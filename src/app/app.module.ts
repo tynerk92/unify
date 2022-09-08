@@ -29,6 +29,7 @@ import {
   faCircleUser,
   faGear,
   faArrowRightFromBracket,
+  faCirclePlus,
 } from '@fortawesome/free-solid-svg-icons'
 
 @NgModule({
@@ -63,7 +64,8 @@ export class AppModule {
       faUserPlus,
       faCircleUser,
       faGear,
-      faArrowRightFromBracket
+      faArrowRightFromBracket,
+      faCirclePlus
     )
   }
 }

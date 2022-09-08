@@ -1,0 +1,5 @@
+<div class="u-board-container" #boardContainer>
+  <ng-container *ngFor="let section of boardSections">
+    <div unify-board-section [title]="section.title" [data]="section"></div>
+  </ng-container>
+</div>

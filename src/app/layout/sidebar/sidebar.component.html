@@ -2,4 +2,8 @@
   <unify-admin-navigation
     *ngSwitchCase="userRoles.ADMIN"
   ></unify-admin-navigation>
+  <ng-container *ngSwitchCase="userRoles.TEAM_MEMBER">
+    <unify-nav-item label="Dashboard" route="user/dashboard"></unify-nav-item>
+    <unify-nav-item label="Board" route="user/board"></unify-nav-item>
+  </ng-container>
 </div>

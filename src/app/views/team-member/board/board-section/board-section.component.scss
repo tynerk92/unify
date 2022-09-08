@@ -1,0 +1,38 @@
+.u-board-section-container {
+  position: relative;
+  padding-right: calc(var(--u-space-32) + 8px);
+  transition: padding-right 0.1s ease;
+  min-height: var(--u-space-128);
+  border: 3px dashed;
+  border-radius: var(--u-space-8);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--u-space-16) 0;
+
+  .u-board-section-title {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    padding: 2px var(--u-space-4);
+    border-bottom-right-radius: var(--u-space-4);
+    border-top-left-radius: var(--u-space-4);
+  }
+
+  .u-board-add-button {
+    background: rgba(0, 0, 0, 0.075);
+    padding: var(--u-space-48) var(--u-space-32);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    ::ng-deep {
+      .svg-inline--fa {
+        height: 2em;
+      }
+    }
+  }
+}

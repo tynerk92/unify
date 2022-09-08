@@ -13,6 +13,7 @@
   --u-space-256: 16rem;
   --u-space-128: 8rem;
   --u-space-64: 4rem;
+  --u-space-48: 3rem;
   --u-space-32: 2rem;
   --u-space-16: 1rem;
   --u-space-8: 0.5rem;
@@ -36,6 +37,9 @@
   --u-sidebar-width: var(--u-space-256);
   --u-content-horizontal-padding: var(--u-space-32);
   --u-toolbar-height: var(--u-space-64);
+  --u-content-height: calc(100vh - var(--u-toolbar-height));
+  --u-content-width: calc(100vw - var(--u-sidebar-width));
+  --u-content-padding: var(--u-space-32);
 
   // Cards
   --u-card-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
