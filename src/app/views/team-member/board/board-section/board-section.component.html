@@ -1,0 +1,11 @@
+<div class="u-board-section-container" #boardSectionContainer>
+  <span class="u-board-section-title" #boardSectionTitle>{{ data.title }}</span>
+  <ng-content></ng-content>
+  <button
+    class="u-board-add-button"
+    title="Add New Story"
+    (click)="openAddStoryDialog()"
+  >
+    <fa-icon [icon]="['fas', 'circle-plus']"></fa-icon>
+  </button>
+</div>

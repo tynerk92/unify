@@ -14,7 +14,6 @@ import {
 } from './create-user/create-user.component'
 import { Dialog } from '@angular/cdk/dialog'
 import { ListFilterComponent } from 'src/app/shared/lists/list/list-filter/list-filter.component'
-import { faFilter } from '@fortawesome/free-solid-svg-icons'
 import { UsersService } from './users.service'
 
 /*
@@ -34,7 +33,6 @@ import { UsersService } from './users.service'
 export class UsersComponent implements OnInit {
   users$: Observable<User[]>
   totalUsers$: number
-  faFilter = faFilter
 
   private searchTimeout: number = 0
 

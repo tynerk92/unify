@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  min-width: 100%;
+  padding-right: var(--u-content-padding);
+}
+
+.u-board-container {
+  display: grid;
+  gap: var(--u-space-16);
+}

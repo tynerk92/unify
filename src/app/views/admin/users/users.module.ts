@@ -16,7 +16,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     SharedModule,
     DialogModule,
     UsersRoutingModule,
-    OverlayModule,
     ReactiveFormsModule,
     FontAwesomeModule,
   ],

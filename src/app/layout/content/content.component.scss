@@ -3,6 +3,7 @@
   height: 100%;
   padding: var(--u-space-32);
   background-color: var(--u-clr-neutral);
-  max-height: calc(100vh - var(--u-toolbar-height));
+  max-height: var(--u-content-height);
   overflow-y: scroll;
+  max-width: var(--u-content-width);
 }
